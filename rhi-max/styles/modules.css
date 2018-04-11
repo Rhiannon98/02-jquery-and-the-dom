@@ -5,7 +5,9 @@
 .main-nav ul li{
     list-style: none;
 }
-
+.template {
+    display:none;
+}
 .main-nav a:visited {
     text-decoration: none;
 }
