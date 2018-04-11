@@ -16,13 +16,16 @@ function Article(rawDataObj) {
   this.publishedOn = rawDataObj.publishedOn;
   this.body = rawDataObj.body;
 }
+console.log(articles);
 
 Article.prototype.toHtml = function () {
   // COMMENT: What is the benefit of cloning the article? (see the jQuery docs)
   // PUT YOUR RESPONSE HERE
 
-  let $newArticle = $('article.template').clone();
+  let $newArticle = $('article.template').clone().appendTo('#articles'); // added .appendTo()
+
   /* TODO: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
+
 
   if (!this.publishedOn) $newArticle.addClass('draft');
   $newArticle.attr('data-category', this.category);
@@ -35,7 +38,10 @@ Article.prototype.toHtml = function () {
       4. article body, and
       5. publication date. */
 
+
+
   // REVIEW: Display the date as a relative number of 'days ago'
+
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn)) / 60 / 60 / 24 / 1000) + ' days ago');
   $newArticle.append('<hr>');
   return $newArticle;
@@ -52,6 +58,24 @@ for (let i = 0; i < rawData.length; i++) {
   articles.push(new Article(rawData[i]));
 }
 
+// rawData.forEach(function (val, i) {
+//   articles.push(new Article(rawData[i]))
+//   console.log(articles);
+// });
+
+
+// for (let i = 0; i < names.length; i++) {
+//   console.log(i, names[i]);
+// }
+
+// names.forEach( function (val,i) {
+//   console.log(i, val);
+// });
+
 for (let i = 0; i < articles.length; i++) {
   $('#articles').append(articles[i].toHtml());
 }
+
+// articles.forEach(function (val, i) {
+//   $('#articles').append(articles[i].toHtml());
+// });
