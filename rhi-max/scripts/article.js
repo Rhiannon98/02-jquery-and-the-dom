@@ -79,7 +79,6 @@ for (let i = 0; i < 5; i++) {
 // rawData.forEach(function (val, i) {
 //   articles.push(new Article(rawData[i]))
 //   console.log(articles);
-// });
 
 
 // for (let i = 0; i < names.length; i++) {
