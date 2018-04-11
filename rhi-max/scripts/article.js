@@ -12,7 +12,7 @@ function Article(rawDataObj) {
   this.title = rawDataObj.title;
   this.category = rawDataObj.category;
   this.author = rawDataObj.author;
-  this.authorURL = rawDataObj.authorUrl;
+  this.authorUrl = rawDataObj.authorUrl;
   this.publishedOn = rawDataObj.publishedOn;
   this.body = rawDataObj.body;
 
@@ -42,8 +42,8 @@ Article.prototype.toHtml = function () {
 
   $('article').find('h1').replaceWith(this.title);
   $('article').find('.article-body').replaceWith(this.body);
+  $('article').find('address > a').replaceWith(`<a href = $(this.authorUrlx)>author</a>`);
   $('article').find('address > a').replaceWith(this.author);
-  $('article').find('address > a').append(this.authorURL);
 
   /* TODO: Now use jQuery traversal and setter methods to fill in the rest of the current template clone with values of the properties of this particular Article instance. (article [i])
     We need to fill in:
@@ -72,7 +72,7 @@ rawData.sort(function (a, b) {
 
 // TODO: Refactor these for loops using the .forEach() array method.
 
-for (let i = 0; i < rawData.length; i++) {
+for (let i = 0; i < 5; i++) {
   articles.push(new Article(rawData[i]));
 }
 
