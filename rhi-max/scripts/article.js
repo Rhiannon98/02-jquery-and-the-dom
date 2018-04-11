@@ -15,14 +15,16 @@ function Article(rawDataObj) {
   this.authorURL = rawDataObj.authorUrl;
   this.publishedOn = rawDataObj.publishedOn;
   this.body = rawDataObj.body;
+
+  console.log(articles);
 }
-console.log(articles);
 
 Article.prototype.toHtml = function () {
   // COMMENT: What is the benefit of cloning the article? (see the jQuery docs)
   // PUT YOUR RESPONSE HERE
 
-  let $newArticle = $('article.template').clone().removeClass('.template'); // makes a new article section html PER the function call
+  let $newArticle = $('article.template').clone(); // makes a new article section html PER the function call
+  $('article').removeClass('.template');
 
   /* TODO: This cloned article still has a class of template. In our modules.css stylesheet, we should give all elements with a class of template a display of none so that our template does not display in the browser. But, we also need to make sure we're not accidentally hiding our cloned article. */
 
@@ -32,11 +34,16 @@ Article.prototype.toHtml = function () {
 
   $newArticle.attr('data-category', this.category);
   //find() method
-  $newArticle.find('address > a').append(this.author, this.authorUrl);
-  $newArticle.find('h1').append(this.title);
-  $newArticle.find('.article-body').append(this.body);
-  $newArticle.attr('date-time').append(this.publishedOn);
+  // $newArticle.find('address > a').replace('Author Name', this.author);
+  // $newArticle.find('address > a').replaceWith(this.authorURL);
+  // $newArticle.find('h1').replace('Title', this.title);
+  // $newArticle.find('.article-body').replaceWith(this.body);
+  // $newArticle.attr('date-time').replace('2000-01-01', this.publishedOn);
 
+  $('article').find('h1').replaceWith(this.title);
+  $('article').find('.article-body').replaceWith(this.body);
+  $('article').find('address > a').replaceWith(this.author);
+  $('article').find('address > a').append(this.authorURL);
 
   /* TODO: Now use jQuery traversal and setter methods to fill in the rest of the current template clone with values of the properties of this particular Article instance. (article [i])
     We need to fill in:
@@ -53,7 +60,8 @@ Article.prototype.toHtml = function () {
   $newArticle.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn)) / 60 / 60 / 24 / 1000) + ' days ago');
   $newArticle.append('<hr>');
 
-  $('.articles').append()
+  // $('.articles').append()
+
   return $newArticle;
 };
 
@@ -64,9 +72,9 @@ rawData.sort(function (a, b) {
 
 // TODO: Refactor these for loops using the .forEach() array method.
 
-// for (let i = 0; i < rawData.length; i++) {
-//   articles.push(new Article(rawData[i]));
-// }
+for (let i = 0; i < rawData.length; i++) {
+  articles.push(new Article(rawData[i]));
+}
 
 // rawData.forEach(function (val, i) {
 //   articles.push(new Article(rawData[i]))
@@ -82,12 +90,13 @@ rawData.sort(function (a, b) {
 //   console.log(i, val);
 // });
 
-// for (let i = 0; i < articles.length; i++) {
-//   $('#articles').append(articles[i].toHtml());
-// }
+for (let i = 0; i < articles.length; i++) {
+  $('#articles').append(articles[i].toHtml());
+}
 
 // articles.forEach(function (val, i) {
 //   $('#articles').append(articles[i].toHtml());
 // });
 
-articles.push(new Article(rawData[0]));
+// articles.push(new Article(rawData[0]));
+// $('.template').clone().appendTo('#articles');
