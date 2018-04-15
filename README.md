@@ -29,5 +29,5 @@ https://github.com/Rhiannon98/02-jquery-and-the-dom/commits/master
 ## Credits: ##
 https://www.w3schools.com/tags/tag_time.asp
 
-
+https://github.com/johncokos
 
