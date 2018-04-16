@@ -1,6 +1,8 @@
 Maxwell Rediker && Rhiannon Mortensen
 version 1.3.0
 
+## CAUTION ##
+THE ARTICLE.JS CAUSES AN INFINITE LOOP
 ## Over View ##
 Here we are attempting to provide CSS to make a more consistent user experience for mobile and desktop user interfaces. We have added jQuery to ensure that each blogAricle object from the array has the same affect as well as the same layout onto the page. Further more, we have drop down menus to ensure that if there is a mobile user, then there is no worry about the menu looking weird and awkward.
 
