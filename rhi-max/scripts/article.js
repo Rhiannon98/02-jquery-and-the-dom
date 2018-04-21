@@ -24,7 +24,8 @@ Article.prototype.toHtml = function () {
   // COMMENT: What is the benefit of cloning the article? (see the jQuery docs)
   // The benefit of cloning the artical within the function is so that there is the ability of changing the way it functions later in this function.
 
-  let $newArticle = $('article.template').clone(); // makes a new article section html PER the function call
+  let $newArticle = $('article.template').clone();
+  // makes a new article section html PER the function call
   $newArticle.removeClass('template');
 
   if (!this.publishedOn) {
